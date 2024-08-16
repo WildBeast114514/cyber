@@ -1,0 +1,21 @@
+- name: Initialize host
+  hosts: localhost
+  connection: local
+  become_method: sudo
+  tasks:
+    - name: Verify OS
+      ansible.builtin.fail:
+        msg: Only Ubuntu 22.04 is supported for this version.
+      when: ansible_distribution_version != '22.04'
+
+    - name: Print message
+      ansible.builtin.debug:
+        msg: "Hello, World!"
+
+    - name: Install Base Environment
+      include_role:
+        name: apolloauto.dev_env.base_env
+
+    - name: Install Third Party Libraries
+      include_role:
+        name: apolloauto.dev_env.third_party

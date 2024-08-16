@@ -1,0 +1,65 @@
+- name: Install Basic Packages
+  become: true
+  ansible.builtin.apt:
+    name:
+      - git
+      - curl
+      - wget
+      - unzip
+      - zip
+      - software-properties-common
+      - apt-transport-https
+      - ca-certificates
+      - gnupg
+      - lsb-release
+    state: latest
+    update_cache: true
+
+- name: Install Build Essentials
+  become: true
+  ansible.builtin.apt:
+    name:
+      - gcc
+      - g++
+      - build-essential
+    state: latest
+    update_cache: true
+
+- name: Install Node.js
+  become: true
+  ansible.builtin.shell: |
+    curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+
+- name: Install Bazel
+  become: true
+  ansible.builtin.shell: |
+    curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor > /usr/share/keyrings/bazel-release.pub.gpg
+    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-release.pub.gpg] https://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list
+    apt-get update && apt-get install -y bazel-5.3.2
+    ln -sf /usr/bin/bazel-5.3.2 /usr/bin/bazel
+
+# - name: Install Bazelist
+#   become: true
+#   ansible.builtin.npm:
+#     name: "@bazel/bazelisk"
+#     global: yes
+#     registry: https://registry.npmjs.org/
+#     state: present
+
+- name: Install Debug Tools
+  become: true
+  ansible.builtin.apt:
+    name:
+      - gdb
+      - valgrind
+      - strace
+      - ltrace
+      - python3-dbg
+      - iproute2
+      - iputils-ping
+      - net-tools
+      - tcpdump
+      - traceroute
+    state: latest
+    update_cache: true

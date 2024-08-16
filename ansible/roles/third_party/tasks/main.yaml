@@ -1,0 +1,77 @@
+- name: Install tinyxml2
+  become: true
+  ansible.builtin.apt:
+    name:
+      - libtinyxml2-dev
+    state: latest
+    update_cache: true
+
+- name: Install asio
+  become: true
+  ansible.builtin.apt:
+    name:
+      - libasio-dev
+    state: latest
+    update_cache: true
+
+- name: Download prebuilt fast-rtps
+  become: true
+  ansible.builtin.get_url:
+    url: https://apollo-system.cdn.bcebos.com/archive/6.0/fast-rtps-1.5.0-1.prebuilt.x86_64.tar.gz
+    checksum: sha256:7f6cd1bee91f3c08149013b3d0d5ff46290fbed17b13a584fe8625d7553f603d
+    dest: /tmp/fast-rtps-1.5.0-1.prebuilt.x64_64.tar.gz
+
+- name: Extract prebuilt fast-rtps
+  become: true
+  ansible.builtin.unarchive:
+    src: /tmp/fast-rtps-1.5.0-1.prebuilt.x64_64.tar.gz
+    dest: /usr/local/
+    extra_opts:
+      - --transform
+      - 's/^fast-rtps-1.5.0-1/fast-rtps/'
+    remote_src: yes
+    creates: /usr/local/fast-rtps
+
+- name: Add fast-rtps to ldconfig
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/ld.so.conf.d/fast-rtps.conf
+    line: /usr/local/fast-rtps/lib
+    create: yes
+
+- name: Run ldconfig
+  become: true
+  ansible.builtin.command:
+    cmd: ldconfig
+
+- name: Install gflags
+  become: true
+  ansible.builtin.apt:
+    name:
+      - libgflags-dev
+    state: latest
+    update_cache: true
+
+- name: Install glog
+  become: true
+  ansible.builtin.apt:
+    name:
+      - libgoogle-glog-dev
+    state: latest
+    update_cache: true
+
+- name: Install ncurse
+  become: true
+  ansible.builtin.apt:
+    name:
+      - libncurses5-dev
+    state: latest
+    update_cache: true
+
+- name: Install uuid
+  become: true
+  ansible.builtin.apt:
+    name:
+      - uuid-dev
+    state: latest
+    update_cache: true
