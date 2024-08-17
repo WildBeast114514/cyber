@@ -1,0 +1,26 @@
+Log file created at: 2024/08/17 06:22:03
+Running on machine: docker-desktop
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0817 06:22:03.986946 19817 global_data.cc:153] host ip: 192.168.65.3
+W0817 06:22:03.986982 19817 environment.h:33] Environment variable [CYBER_PATH] not set, fallback to 
+W0817 06:22:03.988428 19817 environment.h:33] Environment variable [CYBER_PATH] not set, fallback to 
+W0817 06:22:03.988484 19817 scheduler_factory.cc:63] Scheduler conf named /apollo/cyber/conf/cyber_monitor_19817.conf not found, use default.
+W0817 06:22:03.988497 19817 environment.h:33] Environment variable [CYBER_PATH] not set, fallback to 
+I0817 06:22:03.988620 19819 processor.cc:42] processor_tid: 19819
+I0817 06:22:03.988729 19820 processor.cc:42] processor_tid: 19820
+I0817 06:22:03.988754 19821 processor.cc:42] processor_tid: 19821
+I0817 06:22:03.988822 19822 processor.cc:42] processor_tid: 19822
+I0817 06:22:03.988895 19823 processor.cc:42] processor_tid: 19823
+I0817 06:22:03.988931 19824 processor.cc:42] processor_tid: 19824
+I0817 06:22:03.988950 19825 processor.cc:42] processor_tid: 19825
+I0817 06:22:03.989001 19826 processor.cc:42] processor_tid: 19826
+I0817 06:22:03.989043 19827 processor.cc:42] processor_tid: 19827
+I0817 06:22:03.989084 19828 processor.cc:42] processor_tid: 19828
+I0817 06:22:03.989104 19829 processor.cc:42] processor_tid: 19829
+I0817 06:22:03.989125 19830 processor.cc:42] processor_tid: 19830
+I0817 06:22:03.989168 19831 processor.cc:42] processor_tid: 19831
+I0817 06:22:03.989228 19832 processor.cc:42] processor_tid: 19832
+I0817 06:22:03.989261 19833 processor.cc:42] processor_tid: 19833
+I0817 06:22:03.989285 19834 processor.cc:42] processor_tid: 19834
+W0817 06:22:03.989287 19817 environment.h:33] Environment variable [sysmo_start] not set, fallback to 
+I0817 06:22:03.989292 19817 init.cc:113] Register exit handle succ.

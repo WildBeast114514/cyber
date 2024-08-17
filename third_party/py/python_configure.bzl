@@ -177,6 +177,7 @@ def _get_python_lib(repository_ctx, python_bin, lib_path_key):
         "import site\n" +
         "import os\n" +
         "import platform\n" +
+        "import distro\n" + 
         "\n" +
         "try:\n" +
         "  input = raw_input\n" +
@@ -190,7 +191,7 @@ def _get_python_lib(repository_ctx, python_bin, lib_path_key):
         "  library_paths = site.getsitepackages()\n" +
         "except AttributeError:\n" +
         "  from sysconfig import get_path\n" +
-        "  if platform.freedesktop_os_release().get('ID') in ('debian', 'ubuntu'):\n" +
+        "  if 'Ubuntu' in distro.name(pretty=True) or 'Debian' in distro.name(pretty=True):\n" +
         "    library_paths = [get_path('platlib', 'deb_system')]\n" +
         "  else:\n" +
         "    library_paths = [get_path('platlib')]\n" +
@@ -229,8 +230,8 @@ def _get_python_include(repository_ctx, python_bin):
         [
             python_bin,
             "-c",
-            "import sysconfig;import platform;" +
-            "print(sysconfig.get_path('include', 'deb_system') if platform.freedesktop_os_release().get('ID') in ('ubuntu', 'debian') else sysconfig.get_path('include'))",
+            "import sysconfig;import platform;import distro;" +
+            "print(sysconfig.get_path('include'))",
         ],
         error_msg = "Problem getting python include path for {}.".format(python_bin),
         error_details = (

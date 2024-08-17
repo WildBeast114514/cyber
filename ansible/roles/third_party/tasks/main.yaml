@@ -17,7 +17,7 @@
 - name: Download prebuilt fast-rtps
   become: true
   ansible.builtin.get_url:
-    url: https://apollo-system.cdn.bcebos.com/archive/6.0/fast-rtps-1.5.0-1.prebuilt.x86_64.tar.gz
+    url: https://apollo-system.cdn.bcebos.com/archive/9.0/fast-rtps-1.5.0-1.prebuilt.aarch64.tar.gz
     checksum: sha256:7f6cd1bee91f3c08149013b3d0d5ff46290fbed17b13a584fe8625d7553f603d
     dest: /tmp/fast-rtps-1.5.0-1.prebuilt.x64_64.tar.gz
 
