@@ -1,8 +1,0 @@
-Log file created at: 2024/08/17 06:19:25
-Running on machine: docker-desktop
-Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
-I0817 06:19:25.166191 19610 global_data.cc:153] host ip: 192.168.65.3
-W0817 06:19:25.166231 19610 environment.h:33] Environment variable [CYBER_PATH] not set, fallback to 
-E0817 06:19:25.166253 19610 file.cc:115] File [/apollo/cyber/conf/cyber.pb.conf] does not exist! 
-E0817 06:19:25.166265 19610 global_data.cc:159] read cyber default conf failed!
-F0817 06:19:25.166267 19610 global_data.cc:55] Check failed: InitConfig() 
